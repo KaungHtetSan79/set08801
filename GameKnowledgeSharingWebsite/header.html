@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Game Knowledge Hub</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .logo img {
+            width: 120px;
+            /* Adjust size as needed */
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h2>Rodo</h2>
+        </div>
+
+        <div class="search-container">
+
+            <input type="text" placeholder="Search bar" class="search-bar">
+            <img src="../image/Search.png" alt="Search" class="search-icon">
+        </div>
+        <nav>
+            <button>Home</button>
+            <button>Game Guides</button>
+            <button>News</button>
+            <button>Contact</button>
+            <button>Login</button>
+            <button id="theme-toggle">Toggle Mode</button>
+        </nav>
+    </header>
+
+    <script>
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById("theme-toggle");
+            const logo = document.getElementById("logo");
+
+            themeToggle.addEventListener("click", function () {
+                document.body.classList.toggle("light-mode");
+                document.body.classList.toggle("dark-mode");
+
+                if (logo) {
+                    logo.src = document.body.classList.contains("light-mode") ? "../image/Klogo.png" :
+                        "../image/Klogo.png";
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", setupThemeToggle);
+    </script>
+</body>
+
+</html>

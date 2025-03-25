@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Knowledge Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+</head>
+
+<body class="dark-mode">
+    <!-- Include Header -->
+    <div w3-include-html="header.html"></div>
+
+    <main>
+        <!-- Game Categories -->
+        <section class="categories">
+            <button>Action</button>
+            <button>RPG</button>
+            <button>Sport</button>
+            <button>Strategy</button>
+        </section>
+
+        <!-- Content Grid -->
+        <section class="content-grid">
+            <div class="advertisement">
+                <img src="../image/Advposter.jpg" alt="Advertisement">
+            </div>
+            <div class="latest-guides">
+                <h2>Latest Guides</h2>
+                <div class="lg-image">
+                    <img src="../image/Advposter.jpg" alt="Game Guide">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <hr>
+                <div class="lg-image">
+                    <img src="../image/Advposter.jpg" alt="Game Guide">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+                <hr>
+            </div>
+        </section>
+        <!-- Game Info -->
+        <section class="game-info">
+            <div class="most-popular">
+                <h2>Most Popular Game</h2>
+                <div class="game-card">
+                    <img src="../image/Advposter.jpg" alt="Game Image">
+                    <p>Popular Game 1</p>
+                </div>
+                <div class="game-card">
+                    <img src="../image/Advposter.jpg" alt="Game Image">
+                    <p>Popular Game 2</p>
+                </div>
+            </div>
+
+        </section>
+        <!-- Latest News with Images -->
+        <section class="latest-news">
+            <h2>Latest News</h2>
+            <div class="news-grid">
+                <div class="news-card" onclick="goToNewsPage('news1.html')">
+                    <img src="../image/Advposter.jpg" alt="News Image">
+                    <div class="news-content">
+                        <h2>Daily Deals: SteelSeries Arctis Nova Pro...</h2>
+                        <p>4h ago - Huge savings on headphones, LEGOs, and more.</p>
+                    </div>
+                </div>
+                <div class="news-card" onclick="goToNewsPage('news2.html')">
+                    <img src="../image/Advposter.jpg" alt="News Image">
+                    <div class="news-content">
+                        <h2>Mortal Kombat 2 Cast and Characters</h2>
+                        <p>4h ago - Heroes and villains, both new and old...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Include Footer -->
+    <div w3-include-html="footer.html"></div>
+
+    <script>
+        w3.includeHTML(function () {
+            setupThemeToggle();
+        });
+
+        function goToNewsPage(page) {
+            window.location.href = page;
+        }
+    </script>
+</body>
+
+</html>
