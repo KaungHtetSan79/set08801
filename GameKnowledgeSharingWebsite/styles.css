@@ -287,6 +287,31 @@ button:hover {
     color: black;
 }
 
+ .logo img {
+    width: 120px;
+    height: auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-email {
+    color: white;
+    font-size: 14px;
+}
+
+.logout-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .content-grid {

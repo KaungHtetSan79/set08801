@@ -37,7 +37,7 @@
 <body>
     <header>
         <div class="logo">
-            <h2>Rodo</h2>
+            <h2><img src="../image/Logo.png" alt=""></h2>
         </div>
 
         <div class="search-container">
@@ -46,12 +46,13 @@
         </div>
 
         <nav>
-            <button>Home</button>
-            <button>Game Guides</button>
-            <button>News</button>
-            <button>Contact</button>
+            <a href="home.html"><button>Home</button></a>
+            <a href="game-guides.html"><button>Game Guides</button></a>
+            <a href="news.html"><button>News</button></a>
+            <a href="contact.html"><button>Contact</button></a>
+            <a href="about.html"><button>About Us</button></a>
             <div id="auth-container">
-                <button id="login-btn">Login</button>
+                <!-- Login/Logout button will go here -->
             </div>
             <button id="theme-toggle">Toggle Mode</button>
         </nav>
@@ -80,6 +81,7 @@
         function logout() {
             localStorage.removeItem("loggedInUser");
             setupAuth(); // Refresh header
+            window.location.href = "home.html"; // Redirect to home page after logout
         }
 
         function setupThemeToggle() {

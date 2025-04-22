@@ -1,5 +1,5 @@
 /* Default Dark Mode Styles */
-body {
+.dark-mode {
     background-color: #1a1a1a;
     color: white;
     font-family: Arial, sans-serif;
@@ -38,6 +38,25 @@ button {
 button:hover {
     background-color: #666;
     transform: scale(1.05);
+}
+
+/* Search Bar */
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-bar {
+    padding-left: 30px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
 }
 
 /* Categories */
@@ -82,7 +101,11 @@ button:hover {
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.advertisement h2 {
+    margin: 10px;
+    padding: 10px;
 }
 
 .advertisement img {
@@ -136,14 +159,16 @@ button:hover {
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Ensures three equal columns */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     gap: 20px;
 }
 
 .news-card {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
+    margin: 10px;
     background: #333;
     padding: 15px;
     border-radius: 5px;
@@ -157,12 +182,12 @@ button:hover {
 }
 
 .news-card img {
-    width: 100px;
-    height: 100px;
+    width: 250px;
+    height: 150px;
     border-radius: 5px;
 }
 
-/* Most Popular & Latest Cheat */
+/* Game Info */
 .game-info {
     display: flex;
     gap: 20px;
@@ -170,15 +195,19 @@ button:hover {
     flex-wrap: wrap;
 }
 
+/* Most Popular & Latest Cheat */
 .most-popular, .latest-cheat {
     flex: 1;
     background: #444;
     padding: 20px;
     border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
-.most-popular .game-card,
-.latest-cheat .cheat-card {
+/* Card Style */
+.popular-card, .cheat-card {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -189,17 +218,19 @@ button:hover {
     transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.most-popular .game-card:hover,
-.latest-cheat .cheat-card:hover {
+.popular-card:hover, .cheat-card:hover {
     background: #555;
     transform: scale(1.03);
 }
 
-.most-popular .game-card img,
-.latest-cheat .cheat-card img {
-    width: 100px;
-    height: 100px;
+.popular-card img, .cheat-card img {
+    width: 150px;
+    height: 200px;
     border-radius: 5px;
+}
+
+.popular-content, .cheat-content {
+    flex: 1;
 }
 
 .latest-cheat button {
@@ -231,6 +262,10 @@ button:hover {
     background-color: #f0f0f0;
 }
 
+.light-mode nav {
+    background-color: #f0f0f0;
+}
+
 .light-mode button {
     background-color: #ddd;
     color: black;
@@ -240,6 +275,9 @@ button:hover {
     background-color: #bbb;
 }
 
+.light-mode .popular-card,
+.light-mode .latest-cheat,
+.light-mode .cheat-card,
 .light-mode .advertisement,
 .light-mode .latest-guides,
 .light-mode .latest-news div,
@@ -253,17 +291,58 @@ button:hover {
     color: black;
 }
 
+.light-mode .user-email {
+    color: black;
+}
+
+.light-mode .logout-btn {
+    background-color: darkred;
+    color: white;
+}
+
+.light-mode .search-bar {
+    background-color: white;
+    color: black;
+}
+
+.light-mode .search-icon {
+    filter: invert(0);
+}
+
+/* Logo */
+.logo img {
+    width: 120px;
+    height: auto;
+}
+
+/* User Info */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-email {
+    color: white;
+    font-size: 14px;
+}
+
+.logout-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .content-grid {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .game-info {
         flex-direction: column;
         align-items: center;
@@ -271,10 +350,6 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-    .news-grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
     header {
         flex-direction: column;
         align-items: center;

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Game Knowledge Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="auth.js"></script>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Contact Container */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .contact-logo img {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            padding: 12px;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: grey;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-form form {
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h2>Rodo</h2>
+        </div>
+
+        <div class="search-container">
+            <input type="text" placeholder="Search bar" class="search-bar">
+            <img src="../image/Search.png" alt="Search" class="search-icon">
+        </div>
+
+        <nav>
+            <a href="home.html"><button>Home</button></a>
+            <a href="game-guides.html"><button>Game Guides</button></a>
+            <a href="news.html"><button>News</button></a>
+            <a href="contact.html"><button>Contact</button></a>
+            <a href="about.html"><button>About Us</button></a>
+            <div id="auth-container"></div>
+            <button id="theme-toggle">Toggle Mode</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="contact-us">
+            <div class="contact-container">
+                <!-- Logo / Image -->
+                <div class="contact-logo">
+                    <img src="../image/Logo.png" alt="Contact Us Logo">
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2>Contact Us</h2>
+                    <form>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your name" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Your email" required>
+
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" placeholder="Your message" required></textarea>
+
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div w3-include-html="footer.html"></div>
+
+    <script>
+        w3.includeHTML();
+    </script>
+</body>
+
+</html>

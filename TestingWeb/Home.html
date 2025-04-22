@@ -7,13 +7,41 @@
     <title>Game Knowledge Hub</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script src="auth.js"></script>
+
+    <style>
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-email {
+            color: white;
+            font-size: 14px;
+        }
+
+        .logout-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
 <body class="dark-mode">
-
+    <!-- Inline Header -->
     <header>
         <div class="logo">
-            <h2>Rodo</h2>
+            <img src="../image/Logo.png" alt="">
         </div>
 
         <div class="search-container">
@@ -22,27 +50,27 @@
         </div>
 
         <nav>
-            <button>Home</button>
-            <button>Game Guides</button>
-            <button>News</button>
-            <button>Contact</button>
+            <a href="home.html"><button>Home</button></a>
+            <a href="game-guides.html"><button>Game Guides</button></a>
+            <a href="news.html"><button>News</button></a>
+            <a href="contact.html"><button>Contact</button></a>
+            <a href="about.html"><button>About Us</button></a>
             <div id="auth-container">
-                <button id="login-btn">Login</button>
+                <!-- Login/Logout button will go here -->
             </div>
             <button id="theme-toggle">Toggle Mode</button>
         </nav>
     </header>
 
     <main>
-        <!-- Game Categories -->
         <section class="categories">
-            <button>Action</button>
-            <button>RPG</button>
-            <button>Sport</button>
-            <button>Strategy</button>
+            <a href="home.html"><button>Home</button></a>
+            <a href="game-guides.html"><button>Game Guides</button></a>
+            <a href="news.html"><button>News</button></a>
+            <a href="contact.html"><button>Contact</button></a>
+            <a href="aboutus.html"><button>About Us</button></a>
         </section>
 
-        <!-- Content Grid -->
         <section class="content-grid">
             <div class="advertisement">
                 <h2>The New Upcoming Games</h2>
@@ -53,7 +81,6 @@
                 <div class="lg-image">
                     <img src="../image/lg1.jpg" alt="Game Guide">
                     <p><b>Grand Theft Auto V</b></p>
-
                 </div>
                 <hr>
                 <div class="lg-image">
@@ -69,11 +96,8 @@
             </div>
         </section>
 
-        <!-- Latest News with Images and News Grid -->
         <section class="latest-news">
             <h2>Latest News</h2>
-
-            <!-- News Grid -->
             <div class="news-grid">
                 <div class="news-card" onclick="goToNewsPage('news1.html')">
                     <img src="../image/new1.jpg" alt="News Image">
@@ -110,7 +134,7 @@
                 <div class="popular-card">
                     <img src="../image/popular1.jpg" alt="Game Image">
                     <div class="popular-content">
-                        <h3>Tom rider</h3>
+                        <h3>Tom Rider</h3>
                         <p>The franchise focuses on the fictional British archaeologist Lara Croft, who travels around
                             the world searching for lost artefacts and infiltrating dangerous tombs and ruins.</p>
                     </div>
@@ -144,40 +168,15 @@
                         <button>View Cheat</button>
                     </div>
                 </div>
-
             </div>
-
         </section>
     </main>
 
-    <!-- Include Footer -->
     <div w3-include-html="footer.html"></div>
 
-    <!-- JavaScript -->
-    <script>
-        w3.includeHTML(function () {
-            setupThemeToggle();
-        });
 
-        function setupThemeToggle() {
-            const themeToggle = document.getElementById("theme-toggle");
-            if (!themeToggle) {
-                console.warn("Theme toggle button not found.");
-                return;
-            }
 
-            themeToggle.addEventListener("click", function () {
-                document.body.classList.toggle("light-mode");
-                document.body.classList.toggle("dark-mode");
 
-                const logo = document.getElementById("logo");
-                if (logo) {
-                    logo.src = document.body.classList.contains("light-mode") ? "light-logo.png" :
-                        "dark-logo.png";
-                }
-            });
-        }
-    </script>
 </body>
 
 </html>

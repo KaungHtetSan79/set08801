@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous">
+</head>
+
+<body>
+    <footer class="footer">
+        <div class="footer-section">
+            <h5>About Us</h5>
+            <p>Helping gamers level up with expert guides and insights.</p>
+
+        </div>
+
+        <div class="footer-section">
+
+            <h5>Contanct Us </h5>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+        </div>
+        <div class="copyright">© 2025 Developed By Kaung Htet San.</div>
+    </footer>
+
+    <script>
+        w3.includeHTML(() => {
+
+            const themeToggle = document.getElementById("theme-toggle");
+            if (themeToggle) {
+                themeToggle.addEventListener("click", function () {
+                    document.body.classList.toggle("light-mode");
+                    document.body.classList.toggle("dark-mode");
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
