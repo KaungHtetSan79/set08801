@@ -271,6 +271,9 @@ button:hover {
     color: black;
 }
 
+
+
+
 .light-mode button:hover {
     background-color: #bbb;
 }
@@ -280,9 +283,9 @@ button:hover {
 .light-mode .cheat-card,
 .light-mode .advertisement,
 .light-mode .latest-guides,
-.light-mode .latest-news div,
+.light-mode .news-card,
 .light-mode .most-popular,
-.light-mode .latest-cheat {
+.light-mode .latest-news {
     background-color: #e0e0e0;
 }
 
@@ -307,6 +310,51 @@ button:hover {
 
 .light-mode .search-icon {
     filter: invert(0);
+}
+
+/* Force all text inside Light Mode to Black */
+/* Force all text inside Light Mode to Black */
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode h4,
+.light-mode h5,
+.light-mode h6,
+.light-mode p,
+.light-mode a,
+.light-mode span,
+.light-mode div,
+.light-mode li {
+    color: black !important;
+}
+/* Additional text color fixes for other UI elements */
+.light-mode button, 
+.light-mode .user-email, 
+.light-mode .search-bar,
+.light-mode .search-icon {
+    color: black !important;
+}
+
+/* Fixing any text that might remain white in specific elements */
+.light-mode .advertisement h2,
+.light-mode .news-card,
+.light-mode .game-guide-detail h1, 
+.light-mode .game-guide-detail h2, 
+.light-mode .game-guide-detail p {
+    color: black !important;
+}
+
+
+/* Fix text inside cards */
+.light-mode .advertisement h2,
+.light-mode .popular-content,
+.light-mode .cheat-content,
+.light-mode .latest-guides,
+.light-mode .news-card,
+.light-mode .latest-news,
+.light-mode .most-popular,
+.light-mode .latest-cheat {
+    color: black;
 }
 
 /* Logo */

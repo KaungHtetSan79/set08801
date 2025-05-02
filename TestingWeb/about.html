@@ -9,7 +9,29 @@
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="auth.js"></script>
     <style>
-        /* Base styling for container blocks */
+        /* Search area */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+        }
+
+        /* About container styles */
         .about-container {
             display: flex;
             flex-wrap: wrap;
@@ -56,37 +78,7 @@
             margin-bottom: 10px;
         }
 
-        /* Optional: make header/nav more responsive */
-        header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            gap: 10px;
-            flex-direction: row;
-        }
-
-        nav {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .search-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex: 1;
-        }
-
-        .search-bar {
-            flex-grow: 1;
-            max-width: 200px;
-        }
-
-        /* Responsive media query */
+        /* Responsive styles */
         @media (max-width: 768px) {
             .about-container {
                 flex-direction: column;
@@ -120,33 +112,85 @@
                 flex-direction: column;
             }
         }
+
+        /* Hamburger menu for small screens */
+        .hamburger-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: transparent;
+            color: white;
+            border: none;
+        }
+
+        /* Hide the nav links on small screens by default */
+        #nav-menu {
+            display: flex;
+            gap: 10px;
+        }
+
+        #nav-menu a {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+                /* Show hamburger icon on smaller screens */
+            }
+
+            #nav-menu {
+                display: none;
+                /* Hide the navigation links by default */
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                background-color: black;
+                padding: 10px;
+            }
+
+            #nav-menu a {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Toggle dropdown menu */
+            #nav-menu.active {
+                display: flex;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Inline Header -->
     <header>
         <div class="logo">
-            <img src="../image/Logo.png" alt="">
+            <img src="../image/Logo.png" alt="Logo">
         </div>
 
         <div class="search-container">
-            <input type="text" placeholder="Search bar" class="search-bar">
+            <input type="text" placeholder="Search" class="search-bar">
             <img src="../image/Search.png" alt="Search" class="search-icon">
         </div>
 
-        <nav>
-            <a href="home.html"><button>Home</button></a>
+        <nav id="nav-menu">
+            <a href="index.html"><button>Home</button></a>
             <a href="game-guides.html"><button>Game Guides</button></a>
             <a href="news.html"><button>News</button></a>
             <a href="contact.html"><button>Contact</button></a>
             <a href="about.html"><button>About Us</button></a>
-            <div id="auth-container">
-                <!-- Login/Logout button will go here -->
-            </div>
+            <div id="auth-container"></div>
+            <a href="edit-profile.html"><button>Edit Profile</button></a>
             <button id="theme-toggle">Toggle Mode</button>
         </nav>
+
+        <!-- Hamburger Icon -->
+        <div class="hamburger-menu" id="hamburger-menu">
+            &#9776;
+        </div>
     </header>
+
 
     <main>
         <section class="about-us">
@@ -187,5 +231,14 @@
         </section>
     </main>
 
-
     <div w3-include-html="footer.html"></div>
+
+    <script>
+        // Toggle the navigation menu when the hamburger icon is clicked
+        document.getElementById("hamburger-menu").addEventListener("click", function () {
+            document.getElementById("nav-menu").classList.toggle("active");
+        });
+    </script>
+</body>
+
+</html>

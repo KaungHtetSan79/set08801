@@ -9,14 +9,12 @@
     <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="auth.js"></script>
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
 
-        /* Contact Container */
         .contact-container {
             display: flex;
             flex-wrap: wrap;
@@ -72,25 +70,85 @@
             background-color: grey;
         }
 
-        /* Responsive */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .logo h2 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 10px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+        }
+
         @media (max-width: 768px) {
-            .contact-container {
+            .nav-items {
+                display: none;
                 flex-direction: column;
-                text-align: center;
+                width: 100%;
+                align-items: center;
             }
 
-            .contact-form form {
-                align-items: stretch;
+            .nav-items.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">
-            <h2>Rodo</h2>
+            <img src="../image/Logo.png" alt="Logo">
         </div>
 
         <div class="search-container">
@@ -98,27 +156,33 @@
             <img src="../image/Search.png" alt="Search" class="search-icon">
         </div>
 
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
         <nav>
-            <a href="home.html"><button>Home</button></a>
-            <a href="game-guides.html"><button>Game Guides</button></a>
-            <a href="news.html"><button>News</button></a>
-            <a href="contact.html"><button>Contact</button></a>
-            <a href="about.html"><button>About Us</button></a>
-            <div id="auth-container"></div>
-            <button id="theme-toggle">Toggle Mode</button>
+            <div class="nav-items">
+                <a href="index.html"><button>Home</button></a>
+                <a href="game-guides.html"><button>Game Guides</button></a>
+                <a href="news.html"><button>News</button></a>
+                <a href="contact.html"><button>Contact</button></a>
+                <a href="about.html"><button>About Us</button></a>
+                <div id="auth-container"></div>
+                <a href="edit-profile.html"><button>Edit Profile</button></a>
+                <button id="theme-toggle">Toggle Mode</button>
+            </div>
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
         <section class="contact-us">
             <div class="contact-container">
-                <!-- Logo / Image -->
                 <div class="contact-logo">
                     <img src="../image/Logo.png" alt="Contact Us Logo">
                 </div>
 
-                <!-- Contact Form -->
                 <div class="contact-form">
                     <h2>Contact Us</h2>
                     <form>
@@ -138,11 +202,15 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <div w3-include-html="footer.html"></div>
 
     <script>
         w3.includeHTML();
+
+        function toggleMenu() {
+            const navItems = document.querySelector('.nav-items');
+            navItems.classList.toggle('active');
+        }
     </script>
 </body>
 

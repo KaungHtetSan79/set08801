@@ -10,8 +10,110 @@
     <script src="auth.js"></script>
     <link rel="stylesheet" href="gameguidestyle.css">
     <style>
+        /* Search area */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 200px;
+            margin: 0 auto;
+            position: relative;
+            /* Added to help with absolute positioning of icon */
+        }
 
+        .search-bar {
+            flex-grow: 1;
+            padding: 8px;
+            font-size: 16px;
+            padding-left: 30px;
+            /* Added padding to give space for the icon */
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 8px;
+            /* Position the icon on the left */
+            top: 50%;
+            transform: translateY(-50%);
+            /* Vertically center the icon */
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .search-bar {
+                width: 100%;
+                max-width: none;
+                padding-left: 30px;
+                /* Added padding for icon on small screens */
+            }
+
+            header {
+                flex-direction: column;
+            }
+        }
+
+        /* Hamburger menu for small screens */
+        .hamburger-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: transparent;
+            color: white;
+            border: none;
+        }
+
+        /* Hide the nav links on small screens by default */
+        #nav-menu {
+            display: flex;
+            gap: 10px;
+        }
+
+        #nav-menu a {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+                /* Show hamburger icon on smaller screens */
+            }
+
+            #nav-menu {
+                display: none;
+                /* Hide the navigation links by default */
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                background-color: black;
+                padding: 10px;
+            }
+
+            #nav-menu a {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Toggle dropdown menu */
+            #nav-menu.active {
+                display: flex;
+            }
+        }
     </style>
+
 
 </head>
 
@@ -28,7 +130,7 @@
             <img src="../image/Search.png" alt="Search" class="search-icon">
         </div>
 
-        <nav>
+        <nav id="nav-menu">
             <a href="index.html"><button>Home</button></a>
             <a href="game-guides.html"><button>Game Guides</button></a>
             <a href="news.html"><button>News</button></a>
@@ -39,6 +141,11 @@
 
             <button id="theme-toggle">Toggle Mode</button>
         </nav>
+
+        <div class="hamburger-menu" id="hamburger-menu">
+            &#9776;
+        </div>
+
     </header>
 
     <!-- Main Content Section -->
@@ -239,6 +346,7 @@
         </section>
 
     </main>
+    <div w3-include-html="footer.html"></div>
 
     <script>
         // Store game guide data in localStorage with additional details
@@ -304,6 +412,12 @@
         });
     </script>
 
+    <script>
+        // Toggle the navigation menu when the hamburger icon is clicked
+        document.getElementById("hamburger-menu").addEventListener("click", function () {
+            document.getElementById("nav-menu").classList.toggle("active");
+        });
+    </script>
 
 
 </body>

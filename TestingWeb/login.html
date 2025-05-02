@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login & Register</title>
     <style>
         body {
@@ -60,13 +60,22 @@
             background-color: #0056b3;
         }
 
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .toggle-btn {
             background: none;
             border: none;
             color: #007bff;
             cursor: pointer;
-            padding: 0;
+            padding: 10px;
             margin-top: 10px;
+            width: 90%;
+            text-align: center;
+            display: inline-block;
         }
 
         .toggle-btn:hover {
@@ -77,25 +86,34 @@
             color: red;
             margin-top: 10px;
         }
+
+        .logo img {
+            max-width: 50%;
+            height: auto;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Rodo</h1>
+        <div class="logo">
+            <img src="../image/Logo.png" alt="Logo" />
+        </div>
         <h2 id="form-title">Register</h2>
         <form id="auth-form">
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" required>
+                <input type="email" id="email" required />
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" required>
+                <input type="password" id="password" required />
             </div>
-            <button type="submit" class="btn">Register</button>
-            <p class="message" id="message"></p>
-            <button type="button" class="toggle-btn" onclick="toggleForm()">Login Here</button>
+            <div class="button-group">
+                <button type="submit" class="btn">Register</button>
+                <p class="message" id="message"></p>
+                <button type="button" class="toggle-btn" onclick="toggleForm()">Login Here</button>
+            </div>
         </form>
     </div>
 
@@ -108,15 +126,8 @@
 
         function toggleForm() {
             isLogin = !isLogin;
-
-            if (isLogin) {
-                formTitle.textContent = "Login";
-                btn.textContent = "Login";
-            } else {
-                formTitle.textContent = "Register";
-                btn.textContent = "Register";
-            }
-
+            formTitle.textContent = isLogin ? "Login" : "Register";
+            btn.textContent = isLogin ? "Login" : "Register";
             message.textContent = "";
         }
 
@@ -129,11 +140,10 @@
                 const user = JSON.parse(localStorage.getItem(email));
                 if (user && user.password === password) {
                     message.style.color = "green";
-                    message.textContent = "Login successful!";
-
+                    message.textContent = "Login successful.";
                     setTimeout(() => {
-                        localStorage.setItem("loggedInUser", email); // Store logged-in user
-                        window.location.href = "home.html"; // Redirect to home page
+                        localStorage.setItem("loggedInUser", email);
+                        window.location.href = "index.html";
                     }, 1000);
                 } else {
                     message.style.color = "red";
@@ -147,7 +157,7 @@
                         password
                     }));
                     message.style.color = "green";
-                    message.textContent = "Registration successful!";
+                    message.textContent = "Registration successful.";
                     authForm.reset();
                 }
             }

@@ -10,11 +10,35 @@
     <script src="auth.js"></script>
 
     <style>
+        /* Logo */
         .logo img {
             width: 120px;
             height: auto;
         }
 
+        /* Search area */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .search-icon {
+            width: 20px;
+            height: 20px;
+            margin-left: 5px;
+        }
+
+        /* User info */
         .user-info {
             display: flex;
             align-items: center;
@@ -35,22 +59,7 @@
             border-radius: 4px;
         }
 
-        .search-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-bar {
-            padding: 5px;
-            font-size: 16px;
-        }
-
-        .search-icon {
-            width: 20px;
-            height: 20px;
-            margin-left: 5px;
-        }
-
+        /* Card styles */
         .lg-image,
         .news-card,
         .popular-card,
@@ -71,7 +80,67 @@
             text-decoration: none;
             color: inherit;
         }
+
+        /* Hamburger menu for small screens */
+        .hamburger-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: transparent;
+            color: white;
+            border: none;
+        }
+
+        /* Hide the nav links on small screens by default */
+        #nav-menu {
+            display: flex;
+            gap: 10px;
+        }
+
+        #nav-menu a {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            #nav-menu {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                background-color: black;
+                padding: 10px;
+            }
+
+            #nav-menu.active {
+                display: flex;
+            }
+
+            #nav-menu a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .search-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .search-bar {
+                width: 100%;
+                max-width: none;
+            }
+
+            header {
+                flex-direction: column;
+            }
+        }
     </style>
+
 </head>
 
 <body class="dark-mode">
@@ -85,7 +154,7 @@
             <img src="../image/Search.png" alt="Search" class="search-icon" />
         </div>
 
-        <nav>
+        <nav id="nav-menu">
             <a href="index.html"><button>Home</button></a>
             <a href="game-guides.html"><button>Game Guides</button></a>
             <a href="news.html"><button>News</button></a>
@@ -95,6 +164,10 @@
             <a href="edit-profile.html"><button>Edit Profile</button></a>
             <button id="theme-toggle">Toggle Mode</button>
         </nav>
+
+        <div class="hamburger-menu" id="hamburger-menu">
+            &#9776;
+        </div>
     </header>
 
     <main>
@@ -222,6 +295,11 @@
             window.location.href =
                 `game-guides.html?title=${encodedTitle}&description=${encodedDescription}&image=${encodedImage}`;
         }
+
+        // Toggle the navigation menu when the hamburger icon is clicked
+        document.getElementById("hamburger-menu").addEventListener("click", function () {
+            document.getElementById("nav-menu").classList.toggle("active");
+        });
     </script>
 </body>
 

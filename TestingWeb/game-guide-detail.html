@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Guide Detail</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="auth.js"></script>
+    <style>
+        /* Search area */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 200px;
+            margin: 0 auto;
+            position: relative;
+            /* Added to help with absolute positioning of icon */
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            padding: 8px;
+            font-size: 16px;
+            padding-left: 30px;
+            /* Added padding to give space for the icon */
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 8px;
+            /* Position the icon on the left */
+            top: 50%;
+            transform: translateY(-50%);
+            /* Vertically center the icon */
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .search-bar {
+                width: 100%;
+                max-width: none;
+                padding-left: 30px;
+                /* Added padding for icon on small screens */
+            }
+
+            header {
+                flex-direction: column;
+            }
+        }
+
+        /* Hamburger menu for small screens */
+        .hamburger-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            background-color: transparent;
+            color: white;
+            border: none;
+        }
+
+        /* Hide the nav links on small screens by default */
+        #nav-menu {
+            display: flex;
+            gap: 10px;
+        }
+
+        #nav-menu a {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+                /* Show hamburger icon on smaller screens */
+            }
+
+            #nav-menu {
+                display: none;
+                /* Hide the navigation links by default */
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                background-color: black;
+                padding: 10px;
+            }
+
+            #nav-menu a {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Toggle dropdown menu */
+            #nav-menu.active {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="../image/Logo.png" alt="Logo">
+        </div>
+
+        <div class="search-container">
+            <input type="text" placeholder="Search bar" class="search-bar">
+            <img src="../image/Search.png" alt="Search" class="search-icon">
+        </div>
+
+        <nav id="nav-item">
+            <div id="nav-menu">
+                <a href="index.html"><button>Home</button></a>
+                <a href="game-guides.html"><button>Game Guides</button></a>
+                <a href="news.html"><button>News</button></a>
+                <a href="contact.html"><button>Contact</button></a>
+                <a href="about.html"><button>About Us</button></a>
+                <div id="auth-container"></div>
+                <a href="edit-profile.html"><button>Edit Profile</button></a>
+
+                <button id="theme-toggle">Toggle Mode</button>
+            </div>
+        </nav>
+
+        <div class="hamburger-menu" id="hamburger-menu">
+            &#9776;
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="container">
+
+        <section class="right-side">
+            <!-- Game Guide Detail -->
+            <div class="game-guide-detail">
+                <h1 id="game-title" class="page-title" style="color: #fff;"></h1>
+                <img id="game-image" src="../image/default-game.jpg" alt="Game Image"
+                    style="width: 100%; height: auto; border-radius: 8px;">
+                <p id="game-description" style="color: #ccc; font-size: 16px;"></p>
+
+                <h2 style="color: #fff;">Overview</h2>
+                <p id="game-overview" style="color: #ccc; font-size: 16px;"></p>
+
+                <h2 style="color: #fff;">Tips & Tricks</h2>
+                <p id="game-tips" style="color: #ccc; font-size: 16px;"></p>
+
+                <h2 style="color: #fff;">Summary</h2>
+                <p id="game-summary" style="color: #ccc; font-size: 16px;"></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const title = localStorage.getItem("gameTitle");
+            const description = localStorage.getItem("gameDescription");
+            const image = localStorage.getItem("gameImage");
+            const overview = localStorage.getItem("gameOverview");
+            const tips = localStorage.getItem("gameTips");
+            const summary = localStorage.getItem("gameSummary");
+
+            const isDataValid = title && description && image && overview && tips && summary;
+
+            if (!isDataValid) {
+                // Clear possibly corrupted data
+                localStorage.removeItem("gameTitle");
+                localStorage.removeItem("gameDescription");
+                localStorage.removeItem("gameImage");
+                localStorage.removeItem("gameOverview");
+                localStorage.removeItem("gameTips");
+                localStorage.removeItem("gameSummary");
+
+                // Show fallback message and redirect
+                alert("No guide data found. Please select a guide first.");
+                window.location.href = "game-guides.html"; // Change if needed
+                return;
+            }
+
+            // Safely update DOM with retrieved data
+            document.getElementById("game-title").textContent = title;
+            document.getElementById("game-description").textContent = description;
+            document.getElementById("game-image").src = image ||
+                "../image/default-game.jpg"; // Fallback image if missing
+            document.getElementById("game-overview").textContent = overview;
+            document.getElementById("game-tips").textContent = tips;
+            document.getElementById("game-summary").textContent = summary;
+        });
+
+        // Hamburger menu toggle
+        const hamburgerMenu = document.getElementById("hamburger-menu");
+        const navMenu = document.getElementById("nav-menu");
+
+        hamburgerMenu.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    </script>
+
+</body>
+
+</html>

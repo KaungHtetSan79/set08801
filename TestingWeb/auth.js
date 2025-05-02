@@ -22,7 +22,7 @@ function setupAuth() {
 function logout() {
     localStorage.removeItem("loggedInUser");
     setupAuth(); // Refresh the UI after logout
-    window.location.href = "home.html"; // Redirect after logout
+    window.location.href = "index.html"; // Redirect after logout
 }
 
 // ---- Theme Toggle Setup ----
